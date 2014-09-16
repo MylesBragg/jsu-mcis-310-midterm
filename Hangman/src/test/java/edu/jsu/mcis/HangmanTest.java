@@ -50,7 +50,15 @@ public class HangmanTest {
     // test pass correctly.
     @Test
     public void testSixOrMoreMissesCausesALoss() {
-        assertTrue(false);
+		Hangman h = new Hangman();
+		h.setWord("inconceivable");
+		h.guess(a);
+		h.guess(b);
+		h.guess(c);
+		h.guess(d);
+		h.guess(e);
+		h.guess(f);
+        assertEquals(result, Result.Lose);
     }
     
     // Exam Question 5
@@ -60,7 +68,7 @@ public class HangmanTest {
     // test pass correctly.
     @Test
     public void testGuessingEveryLetterBeforeSixMissesCausesAWin() {
-        assertTrue(false);
+        assertTrue();
     }
     
 }
