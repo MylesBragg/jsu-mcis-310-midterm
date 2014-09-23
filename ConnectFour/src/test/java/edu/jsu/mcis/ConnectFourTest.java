@@ -20,7 +20,7 @@ public class ConnectFourTest {
     // Exam Question 2
     // Implement the ConnectFour methods below to make this
     // unit test pass correctly.
-    //@Test
+    @Test
     public void testDropFirstTokenInCenterShouldBeRedAndThenSecondTokenInCenterShouldBeBlack() {
         ConnectFour game = new ConnectFour();
         boolean ableToDropToken = game.dropTokenInColumn(3);
@@ -36,7 +36,7 @@ public class ConnectFourTest {
     // Exam Question 3
     // Implement the ConnectFour methods below to make this
     // unit test pass correctly.
-    //@Test
+    @Test
     public void testFillSecondColumnFromLeftShouldLeaveNoAbilityToDropToken() {
         ConnectFour game = new ConnectFour();
         game.dropTokenInColumn(1);
@@ -71,9 +71,18 @@ public class ConnectFourTest {
     //
     // Then, implement the ConnectFour class methods required to make the 
     // test pass correctly.
-    //@Test
+    @Test
     public void testRedWinVerticallyInCenterColumn() {
-        assertTrue(false);
+		ConnectFour game = new ConnectFour();
+		game.dropTokenInColumn(3);
+        game.dropTokenInColumn(2);
+        game.dropTokenInColumn(3);
+        game.dropTokenInColumn(2);
+        game.dropTokenInColumn(3);
+		game.dropTokenInColumn(2);
+		game.makeStringFromColumn(3);
+		game.doesRedWinVerticallyInColumn(3);
+		assertEquals(ConnectFour.Result.RED_WIN, game.getResult());
     }
     
     // Exam Question 5

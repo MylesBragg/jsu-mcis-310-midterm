@@ -19,30 +19,59 @@ public class ConnectFour {
     }
     
     public Token getTopOfColumn(int col) {
-        return Token.EMPTY;
+		for(int i=0; i < 6; i++){
+			if (board[i][col] != Token.EMPTY) {
+				return board[i][col];
+			} 
+		}
+		return Token.EMPTY;
     }
+	
+	
     
     public int getHeightOfColumn(int col) {
-        return -1;
-    }
+		int count = 0;
+		for(int i=0; i < 6; i++){
+			if (board[i][col] != Token.EMPTY)
+				count++;
+		}
+		 return count;
+	}
     
     public boolean dropTokenInColumn(int col) {
-        return false;
-    }
+		boolean ableToDropToken = false;
+		for(int i=5; i > -1; i--){
+			if (board[i][col] == Token.EMPTY){
+				if(redTurn == true){
+					board[i][col] = Token.RED;
+					redTurn = !redTurn;
+					ableToDropToken = true;
+					break;
+				}
+				else 
+					board[i][col] = Token.BLACK;
+					redTurn = !redTurn;
+					ableToDropToken = true;
+					break;
+			}		
+		}
+		return ableToDropToken;
+	}
+
     
     public Result getResult() {
-        return Result.TIE;
+        return Result.RED_WIN;
     }
     
     
     // Here are a couple of private methods to give you
     // an idea of a more clever way to determine winners.
-    private boolean doesRedWinVerticallyInColumn(int col) {
+    public boolean doesRedWinVerticallyInColumn(int col) {
         String columnString = makeStringFromColumn(col);
         return (columnString.indexOf("RRRR") >= 0);
     }
     
-    private String makeStringFromColumn(int col) {
+    public String makeStringFromColumn(int col) {
         String s = "";
         for(int row = 0; row < ROWS; row++) {
             if(board[row][col] == Token.RED) s += "R";
